@@ -4,7 +4,7 @@ pipeline{
         jdk 'jdk-25'
         gradle 'gradle-latest'
     }
-    enviroment{
+    environment{
         DOCKER_IMAGE= 'beyzakomis/swe304-backend'
     }
     stages{
@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Stage 2 : Build Application'){
             steps{
-                gradle 'clean build -x test'
+                gradle tasks:'clean build -x test'
             }
         } 
         stage('Stage 3 : Docker Build and Push'){
