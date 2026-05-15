@@ -5,7 +5,7 @@ pipeline{
         gradle 'gradle-latest'
     }
     environment{
-        DOCKER_IMAGE= 'beyzakomis/swe304-backend'
+        DOCKER_IMAGE = 'beyzakomis/swe304-backend'
     }
     stages{
         stage('Stage 1 : Clone GitHub Repo'){
