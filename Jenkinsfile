@@ -30,13 +30,14 @@ pipeline{
                 }
             }
         }
-        stage('Stage 4 : Cluster Deployment'){
-            steps{
-                sh "kubectl apply -f deployment.yaml"
-                sh "kubectl apply -f services.yaml"
-                sh "kubectl rollout restart deployment/spring-backend-deployment"
+        stage('Stage 4 : Cluster Deployment') {
+            steps {
+                // Forces kubectl to use the specific config file
+                sh "kubectl --kubeconfig /.kube/config apply -f deployment.yaml"
+                sh "kubectl --kubeconfig /.kube/config apply -f services.yaml"
+                sh "kubectl --kubeconfig /.kube/config rollout restart deployment/spring-backend-deployment"
             }
-        }      
+        }    
         
     }
 
