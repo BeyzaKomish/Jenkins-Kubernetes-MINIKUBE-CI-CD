@@ -15,8 +15,13 @@ pipeline{
         }
         stage('Stage 2 : Build Application'){
             steps{
-                gradle tasks:'clean build -x test'
+                // 1. Move into the backend folder
+                dir('backend'){
+                    // 2. Use 'sh' to execute the gradle command that is in your PATH
+                    sh 'gradle clean build -x test'
+                }
             }
+        }
         } 
         stage('Stage 3 : Docker Build and Push'){
             steps{
