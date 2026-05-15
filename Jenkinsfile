@@ -32,6 +32,7 @@ pipeline{
             steps{
                 sh "kubectl apply -f deployment.yaml"
                 sh "kubectl apply -f services.yaml"
+                sh "kubectl rollout restart deployment/spring-backend-deployment"
             }
         }      
         
