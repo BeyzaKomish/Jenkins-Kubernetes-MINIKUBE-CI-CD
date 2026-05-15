@@ -15,7 +15,9 @@ pipeline{
         }
         stage('Stage 2 : Build Application'){
             steps{
+                dir('backend'){
                 gradle tasks:'clean build -x test'
+                }
             }
         } 
         stage('Stage 3 : Docker Build and Push'){
