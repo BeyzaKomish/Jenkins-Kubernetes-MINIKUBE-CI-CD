@@ -15,16 +15,14 @@ pipeline{
         }
         stage('Stage 2 : Build Application'){
             steps{
-                dir('backend'){
                 gradle tasks:'clean build -x test'
-                }
             }
         } 
         stage('Stage 3 : Docker Build and Push'){
             steps{
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
-                        def app = docker.build("${DOCKER_IMAGE}:latest")
+                        def app = docker.build("${DOCKER_IMAGE}:latest","./backend")
                         app.push()
                     }
                 }
