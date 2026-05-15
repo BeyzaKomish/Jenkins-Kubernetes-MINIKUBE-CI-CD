@@ -22,7 +22,6 @@ pipeline{
                 }
             }
         }
-        } 
         stage('Stage 3 : Docker Build and Push'){
             steps{
                 script{
