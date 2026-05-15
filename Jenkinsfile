@@ -24,7 +24,7 @@ pipeline{
             steps{
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
-                        def app = docker.build("${DOCKER_IMAGE}:latest","./backend")
+                        def app = docker.build("${DOCKER_IMAGE}:latest")
                         app.push()
                     }
                 }
