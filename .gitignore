@@ -1,0 +1,18 @@
+# Java & Gradle
+*.class
+*.log
+*.jar
+.gradle
+**/build/
+!src/**/build/
+
+# IntelliJ IDEA
+.idea/
+.vscode/
+*.iml
+out/
+gen/
+
+# Security (CRITICAL)
+*.pem
+*.keygit add .gitignoregit add .gitignore

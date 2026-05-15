@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-backend-deployment
+spec:
+  replicas: 1 # You will change this to 2 later for Task 7!
+  selector:
+    matchLabels:
+      app: spring-backend
+  template:
+    metadata:
+      labels:
+        app: spring-backend
+    spec:
+      containers:
+      - name: backend-container
+        image: beyzakomis/swe304-backend:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
