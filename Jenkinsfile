@@ -19,6 +19,7 @@ pipeline{
                 gradle tasks:'clean build -x test'
             }
         } 
+        }
         stage('Stage 3 : Docker Build and Push'){
             steps{
                 script{
