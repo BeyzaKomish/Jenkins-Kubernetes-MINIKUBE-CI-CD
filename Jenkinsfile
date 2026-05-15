@@ -17,6 +17,7 @@ pipeline{
             steps{
                 dir('backend'){
                 gradle tasks:'clean build -x test'
+                sh 'rm -f build/libs/*-plain.jar'
             }
         } 
         }
