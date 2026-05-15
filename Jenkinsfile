@@ -32,12 +32,13 @@ pipeline{
         }
         stage('Stage 4 : Cluster Deployment') {
             steps {
-                // Pointing to the public file we just created
-                sh "kubectl --kubeconfig /tmp/k8s-config apply -f deployment.yaml"
-                sh "kubectl --kubeconfig /tmp/k8s-config apply -f services.yaml"
-                sh "kubectl --kubeconfig /tmp/k8s-config rollout restart deployment/spring-backend-deployment"
+                withCredentials([file(credentialsId: 'k8s-config', variable: 'KUBECONFIG')]) {
+                    sh "kubectl apply -f deployment.yaml"
+                    sh "kubectl apply -f services.yaml"
+                    sh "kubectl rollout restart deployment/spring-backend-deployment"
+                }
             }
-        }  
+        }
         
     }
 
